@@ -1,0 +1,32 @@
+<form name="form" ng-app="formCheck">
+  <div ng-controller="nameCtrl">
+    <label>Nom</label>
+    <input id="name" name="name" type="name" ng-model="name" ng-keypress="testName()" ng-pattern="regexName"  required />
+    <div class="valid" ng-show="resultTestName">Saisie valide</div>
+    <div class="error" ng-hide="resultTestName">Saisie invalide</div>
+  </div>
+  <div ng-controller="emailCtrl">
+    <label>Email</label>
+    <input id="email" name="email" type="email" ng-model="email" ng-keypress="testMail()" ng-pattern="regexMail"  required />
+    <div class="valid" ng-show="resultTestMail">Saisie valide</div>
+    <div class="error" ng-hide="resultTestMail">Saisie invalide</div>
+  </div>
+  <div ng controller="subjectCtrl">
+    <label>Sujet</label>
+    <input id="subject" name="subject" type="text" ng-model="subject" ng-keypress="testsubject()" ng-pattern="regexSubject"  required/>
+    <div class="valid" ng-show="resultTestSubject">Saisie valide</div>
+    <div class="error" ng-hide="resultTestSubject">Saisie invalide</div>
+  </div>
+  <div ng-controller="textCtrl">
+    <label>Texte</label>
+    <textarea id="text" name="text" type="text" placeholder="Votre texte ici..." ng-model="text" ng-keypress="testText()" ng-pattern="regexText"  required></textarea>
+    <div class="valid" ng-show="resultTestText">Saisie valide</div>
+    <div class="error" ng-hide="resultTestText">Saisie invalide</div>
+  </div>
+</form>
+<button ng-click="send(message)">Envoyez</button>
+<ul>
+  <li ng-repeat="subject in subjects: track by {{index}}"> <!-- traçage des sujets par index -->
+    <a ng-href="#!/mailContent/$index" >{{subject}}</a>
+  </li>
+</ul>
